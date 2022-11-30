@@ -105,13 +105,15 @@ export default function AccountPopover() {
         <Divider sx={{ borderStyle: 'dashed' }} />
 
         <MenuItem 
-        nClick={() => {
+        onClick={() => {
           
           (async () => {
             unSubscribeToTopic(`${user.user.IdUser}`);
 
           })();
+
           handleLogout();
+
         }}
         sx={{ m: 1 }}>Đăng xuất</MenuItem>
       </MenuPopover>

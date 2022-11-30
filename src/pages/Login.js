@@ -66,9 +66,9 @@ export default function Login() {
               </Tooltip>
             </Stack>
 
-            <Alert severity="info" sx={{ mb: 3 }}>
+            {/* <Alert severity="info" sx={{ mb: 3 }}>
               Use account : <strong>admin</strong> / password :<strong> 123456</strong>
-            </Alert>
+            </Alert> */}
 
             <LoginForm />
 
