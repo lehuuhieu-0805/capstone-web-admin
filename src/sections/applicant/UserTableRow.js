@@ -388,7 +388,7 @@ export default function UserTableRow({ row, selected, onDeleteRow }) {
          })()}
           {(() => {
            
-           if (row.earn_money !== undefined) {
+           if (row.earn_money === 1) {
              return (
               <Grid item xs={6}>
               <h4>Số dư ví : </h4>

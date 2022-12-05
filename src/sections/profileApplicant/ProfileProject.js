@@ -17,24 +17,13 @@ ProfileProject.propTypes = {
 };
 
 export default function ProfileProject({ profile }) {
-  const [listProject, setlistProject] = useState([]);
-  useEffect(() => {
-    axios({
-      url: `https://stg-api-itjob.unicode.edu.vn/api/v1/projects?page-size=50&profileApplicantId=${profile.id}`,
-      method: 'get',
-    })
-      .then((response) => {
-        console.log(response);
-        setlistProject(response.data.data);
-      })
-      .catch((err) => console.log(err));
-  }, [profile.id]);
+
   return (
     <Card>
       <CardHeader title="Dự án" />
 
       <Stack spacing={2} sx={{ p: 3 }}>
-        {listProject && listProject.map((projects) => <ProfileProjects key={projects.id} projects={projects} />)}
+        {profile.projects && profile.projects.map((projects) => <ProfileProjects key={projects.id} projects={projects} />)}
       </Stack>
     </Card>
   );

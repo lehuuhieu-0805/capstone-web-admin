@@ -26,12 +26,12 @@ export default function LoginForm() {
   
 
   const LoginSchema = Yup.object().shape({
-    phone: Yup.string().required('Tên đăng nhập bắt buộc'),
+    email: Yup.string().required('Tên đăng nhập bắt buộc'),
     password: Yup.string().required('Mật khẩu bắt buộc'),
   });
 
   const defaultValues = {
-    phone: '',
+    email: '',
     password: '',
     remember: true,
   };
@@ -50,7 +50,7 @@ export default function LoginForm() {
 
   const onSubmit = async (data) => {
     try {
-      await login(data.phone, data.password);
+      await login(data.email, data.password);
     } catch (error) {
       console.error(error);
       console.log(error === 'Sai role')
@@ -84,7 +84,7 @@ export default function LoginForm() {
       <Stack spacing={3}>
         {!!errors.afterSubmit && <Alert severity="error">{errors.afterSubmit.message}</Alert>}
 
-        <RHFTextField name="phone" label="Tên đăng nhập" />
+        <RHFTextField name="email" label="Tên đăng nhập" />
 
         <RHFTextField
           name="password"

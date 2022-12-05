@@ -222,7 +222,7 @@ export default function ConfirmApplicantCard({ applicant, onDeleteRow, onErrorRo
 
 
                     <ModalImage
-                      small={`${item.url_image}?w=164&h=164&fit=crop&auto=format`} large={item.url_image} className="modal-image"
+                      small={`${item.url_image}?w=164&h=164&fit=crop&auto=format`} medium={item.url_image} className="modal-image"
                     />
                   }
                 </ImageListItem>

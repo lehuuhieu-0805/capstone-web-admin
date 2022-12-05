@@ -35,8 +35,8 @@ export default function ProfileInfomation({ profile }) {
       <CardHeader title="Kỹ năng" />
 
       <Stack spacing={2} sx={{ p: 3 }}>
-        {Skills &&
-          Skills.map((skilles) => (
+        {profile.profile_applicant_skills &&
+          profile.profile_applicant_skills.map((skilles) => (
             // <Typography key={skiller.id} variant='subtitle1'>{skiller.id}</Typography>
             <ProfileSkill key={skilles.id} skilles={skilles} />
           ))}

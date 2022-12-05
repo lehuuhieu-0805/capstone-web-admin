@@ -39,105 +39,39 @@ CompanyJobPostRow.propTypes = {
 
 export default function CompanyJobPostRow({ rows }) {
   const [openDialogDetail, setOpenDialogDetail] = useState(false);
-  const [jobPostDetail, setJobPostDetail] = useState('');
-  const [workingStyleDetail, setWorkingStyleDetail] = useState('');
-  const [jobPositionDetail, setJobPositionDetail] = useState('');
-  const [albumImageDetail, setAlbumImageDetail] = useState([]);
+ 
   // const [jobPostSkillDetail, setJobPostSkillDetail] = useState([]);
   const [skillDetail, setSkillDetail] = useState([]);
-  const [company, setCompany] = useState();
+ 
 
   const handleCloseDialogDetail = () => {
     setOpenDialogDetail(false);
   };
 
   useEffect(() => {
-    axios({
-      url: `https://stg-api-itjob.unicode.edu.vn/api/v1/job-posts/${rows.id}`,
+    rows.job_post_skills.map((jobPostSkill) => axios( {
+      url: `${api.baseUrl}/${api.configPathType.api}/${api.versionType.v1}/${api.GET_SKILL}/${jobPostSkill.skill_id}`,
       method: 'get',
       // headers: {
       //   'Authorization': `Bearer ${token}`
       // },
-    })
-      .then((response) => {
-        setJobPostDetail(response.data.data);
- 
-        axios({
-          url: `${api.baseUrl}/${api.configPathType.api}/${api.versionType.v1}/${api.GET_WORKINGSTYLE}/${response.data.data.working_style_id}`,
-          method: 'get',
-          // headers: {
-          //   'Authorization': `Bearer ${token}`
-          // },
-        }).then((response) => {
-          setWorkingStyleDetail(response.data.data.name);
-          
-        }).catch(error => console.log(error));
-  
-        axios({
-          url: `${api.baseUrl}/${api.configPathType.api}/${api.versionType.v1}/${api.GET_COMPANY}/${response.data.data.company_id}`,
-          method: 'get',
-          // headers: {
-          //   'Authorization': `Bearer ${token}`
-          // }
-        }).then((response) => {
-          setCompany(response.data.data);
-        }).catch(error => console.log(error));
-  
-        axios({
-          url: `${api.baseUrl}/${api.configPathType.api}/${api.versionType.v1}/${api.GET_JOBPOSITION}/${response.data.data.job_position_id}`,
-          method: 'get',
-          // headers: {
-          //   'Authorization': `Bearer ${token}`
-          // },
-        }).then((response) => {
-          setJobPositionDetail(response.data.data.name);
-        }).catch(error => console.log(error));
-  
-        axios({
-          url: `${api.baseUrl}/${api.configPathType.api}/${api.versionType.v1}/${api.GET_ALBUMIMAGE}?jobPostId=${rows.id}`,
-          method: 'get',
-          // headers: {
-          //   'Authorization': `Bearer ${token}`
-          // },
-        }).then((response) => {
-          setAlbumImageDetail(response.data.data);
-        }).catch(error => console.log(error));
-  
-        axios({
-          url: `${api.baseUrl}/${api.configPathType.api}/${api.versionType.v1}/${api.GET_JOBPOSTSKILL}?jobPostId=${rows.id}`,
-          method: 'get',
-          // headers: {
-          //   'Authorization': `Bearer ${token}`
-          // },
-        }).then((response) => {
-          // setJobPostSkillDetail(response.data.data);
-          response.data.data.map((jobPostSkill) => axios( {
-            url: `${api.baseUrl}/${api.configPathType.api}/${api.versionType.v1}/${api.GET_SKILL}/${jobPostSkill.skill_id}`,
-            method: 'get',
-            // headers: {
-            //   'Authorization': `Bearer ${token}`
-            // },
-          }).then((response) => {
-            setSkillDetail(prevState => ([...prevState, {
-              skill: response.data.data.name,
-              skillLevel: jobPostSkill.skill_level
-            }]));
-          }).catch(error => console.log(error)));
-        
-        }).catch(error => console.log(error));
-      })
-      .catch((error) => console.log(error));
-  }, [rows.id]);
+    }).then((response) => {
+      setSkillDetail(prevState => ([...prevState, {
+        skill: response.data.data.name,
+        skillLevel: jobPostSkill.skill_level
+      }]));
+    }).catch(error => console.log(error)));
+  }, []);
   
   return (
     <TableRow>
-      <TableCell align="center">{dayjs(jobPostDetail.create_date).format('DD-MM-YYYY')}</TableCell>
-      <TableCell align="center">{jobPostDetail.title}</TableCell>
+      <TableCell align="center">{dayjs(rows.create_date).format('DD-MM-YYYY')}</TableCell>
+      <TableCell align="center">{rows.title}</TableCell>
       <TableCell align="center" sx={{ textTransform: 'capitalize' }}>
-        {jobPostDetail.quantity}
+        {rows.quantity}
       </TableCell>
       <TableCell align="center" sx={{ textTransform: 'capitalize' }}>
-        {jobPositionDetail}
+        {rows.job_position.name}
       </TableCell>
 
       <TableCell align="center">{(() => {
@@ -230,17 +164,10 @@ export default function CompanyJobPostRow({ rows }) {
               <Card>
                 <CardContent>
                   <Grid container spacing={2}>
-                    <Grid item xs={1} style={{ display: 'flex', justifyContent: 'center' }}>
-                      <img
-                        style={{ borderRadius: '50%', objectFit: 'contain' }}
-                        src={company?.logo}
-                        alt={company?.name}
-                      />
-                    </Grid>
                     <Grid item xs={9}>
-                      <h3>{jobPostDetail.title}</h3>
+                      <h3>{rows.title}</h3>
                       <h4  variant="subtitle2" style={{ fontWeight: 'normal' }}>
-                        {dayjs(jobPostDetail.create_date).format('DD-MM-YYYY HH:mm:ss')}
+                        {dayjs(rows.create_date).format('DD-MM-YYYY HH:mm:ss')}
                       </h4>
                     </Grid>
                     <Grid item xs={2} style={{ display: 'flex', justifyContent: 'flex-end' }}>  {(() => {
@@ -287,7 +214,7 @@ export default function CompanyJobPostRow({ rows }) {
                         <Box display="inline" fontWeight="fontWeightBold">
                           Số lượng tuyển:{' '}
                         </Box>
-                        {jobPostDetail.quantity}
+                        {rows.quantity}
                       </Typography>
                     </Stack>
                     <Stack direction="row">
@@ -295,7 +222,7 @@ export default function CompanyJobPostRow({ rows }) {
                         <Box display="inline" fontWeight="fontWeightBold">
                           Hình thức làm việc:{' '}
                         </Box>
-                        {workingStyleDetail}
+                        {rows.working_style.name}
                       </Typography>
                     </Stack>
 
@@ -304,7 +231,7 @@ export default function CompanyJobPostRow({ rows }) {
                         <Box display="inline" fontWeight="fontWeightBold">
                           Địa điểm làm việc:{' '}
                         </Box>
-                        {jobPostDetail.working_place}
+                        {rows.working_place}
                       </Typography>
                     </Stack>
 
@@ -313,7 +240,7 @@ export default function CompanyJobPostRow({ rows }) {
                         <Box display="inline" fontWeight="fontWeightBold">
                           Vị trí công việc:{' '}
                         </Box>
-                        {jobPositionDetail}
+                        {rows.job_position.name}
                       </Typography>
                     </Stack>
                   </Stack>
@@ -321,8 +248,8 @@ export default function CompanyJobPostRow({ rows }) {
 
                 <Stack direction="row">
                   <ImageList variant="standard" cols={2} gap={8}>
-                    {albumImageDetail &&
-                      albumImageDetail.map((item) => (
+                    {rows.album_images &&
+                      rows.album_images.map((item) => (
                         <ImageListItem key={item.id}>
                           {item.url_image && <ModalImage small={item.url_image} large={item.url_image} className="modal-image1"/>}
                         </ImageListItem>
@@ -341,7 +268,7 @@ export default function CompanyJobPostRow({ rows }) {
                     <Grid container spacing={2}>
                       <Grid item xs={12}>
                         <h4>Mô tả:</h4>
-                        <h4 style={{ fontWeight: 'normal' }} dangerouslySetInnerHTML={{ __html: jobPostDetail?.description }} />
+                        <h4 style={{ fontWeight: 'normal' }} dangerouslySetInnerHTML={{ __html: rows?.description }} />
                       </Grid>
                       <Grid item xs={6}>
                         <h4>Bắt đầu:</h4>

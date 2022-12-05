@@ -11,7 +11,7 @@ export const versionType = {
   
   
   // admin
-  export const LOGIN = 'users/login/admin';
+  export const LOGIN = 'users/login';
 
   // Company
   export const GET_COMPANY = 'companies';

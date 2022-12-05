@@ -24,20 +24,8 @@ ProfileAbout.propTypes = {
 };
 
 export default function ProfileAbout({ profile }) {
-  // const { quote, country, email, role,  school } = profile;
-  const [WorkingStyle, setWorkingStyle] = useState([]);
   const [Applicantinfo, setApplicantinfo] = useState([]);
-  useEffect(() => {
-    axios({
-      url: `https://stg-api-itjob.unicode.edu.vn/api/v1/working-styles/${profile.working_style_id}`,
-      method: 'get',
-    })
-      .then((response) => {
-        // console.log(response)
-        setWorkingStyle(response.data.data);
-      })
-      .catch((err) => console.log(err));
-  }, [profile.working_style_id]);
+
   useEffect(() => {
     axios({
       url: `https://stg-api-itjob.unicode.edu.vn/api/v1/applicants/${profile.applicant_id}`,
@@ -81,7 +69,7 @@ export default function ProfileAbout({ profile }) {
             return (
               <Stack direction="row">
               <IconStyle icon={'ic:round-business-center'} />
-              <Typography variant="body2">{WorkingStyle.name}</Typography>
+              <Typography variant="body2">{profile.working_style.name}</Typography>
             </Stack>
             );
           }

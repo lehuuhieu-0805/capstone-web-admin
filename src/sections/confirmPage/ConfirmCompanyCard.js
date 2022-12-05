@@ -53,22 +53,11 @@ export default function ConfirmCompanyCard({ post, onDeleteRow, onErrorRow,onRej
   };
 
   // console.log(post)
-  useEffect(() => {
-    axios({
-      url: `https://stg-api-itjob.unicode.edu.vn/api/v1/users?page-size=50&companyId=${post.id}`,
-      method: 'get',
-    })
-      .then((response) => {
-        setUser(response.data.data[0].email);
-
-        console.log(response.data.data[0].email);
-      })
-      .catch((error) => console.log(error));
-  }, [post.id]);
+  
 
   const handleAccept = () => {
     axios({
-      url: `https://stg-api-itjob.unicode.edu.vn/api/v1/emails/accept/email?email=${user}`,
+      url: `https://stg-api-itjob.unicode.edu.vn/api/v1/emails/accept/email?email=${post.email}`,
       method: 'get',
     })
       .then((response) => {
@@ -83,7 +72,7 @@ export default function ConfirmCompanyCard({ post, onDeleteRow, onErrorRow,onRej
   };
   const handleReject = () => {
     axios({
-      url: `https://stg-api-itjob.unicode.edu.vn/api/v1/emails/reject/email?email=${user}`,
+      url: `https://stg-api-itjob.unicode.edu.vn/api/v1/emails/reject/email?email=${post.email}`,
       method: 'get',
     })
       .then((response) => {

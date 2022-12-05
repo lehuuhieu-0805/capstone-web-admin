@@ -30,7 +30,7 @@ export default function ProfileWorking({ workinge }) {
     })
       .then((response) => {
         // console.log(response)
-        setJobPosition(response.data.data);
+        setJobPosition(response.data.data.name);
       })
       .catch((err) => console.log(err));
   }, [workinge.job_position_id]);
@@ -48,7 +48,7 @@ export default function ProfileWorking({ workinge }) {
         </Typography>
       </Stack>
       <div style={{ display: 'flex' }}>
-        <Typography variant="body2">Vị trí làm việc : {JobPosition.name}</Typography>
+        <Typography variant="body2">Vị trí làm việc : {JobPosition}</Typography>
       </div>
     </Stack>
   );

@@ -214,6 +214,17 @@ export default function CompanyTableRow({ row, selected, onDeleteRow }) {
                   color={'warning'}
                   sx={{ textTransform: 'capitalize' }}
                 >
+                  Chờ xét duyệt
+                </Label>
+              );
+            }
+            if (status === 3) {
+              return (
+                <Label
+                  variant={theme.palette.mode === 'light' ? 'ghost' : 'filled'}
+                  color={'warning'}
+                  sx={{ textTransform: 'capitalize' }}
+                >
                   Đang xác thực
                 </Label>
               );

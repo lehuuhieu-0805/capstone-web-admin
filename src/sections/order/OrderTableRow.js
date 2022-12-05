@@ -38,18 +38,18 @@ export default function OrderTableRow({ row }) {
             });
   }, [row.create_by]);
 
-  useEffect(()  => {
-    axios({
-      url: `https://stg-api-itjob.unicode.edu.vn/api/v1/products/${row.product_id}`,
-      method: 'get',
-    })
-      .then((response) => {
-        setProduct(response.data.data.name);
-        // console.log(response.data.data);
+  // useEffect(()  => {
+  //   axios({
+  //     url: `https://stg-api-itjob.unicode.edu.vn/api/v1/products/${row.product_id}`,
+  //     method: 'get',
+  //   })
+  //     .then((response) => {
+  //       setProduct(response.data.data.name);
+  //       // console.log(response.data.data);
         
-      })
-      .catch((error) => console.log(error));
-  }, []);
+  //     })
+  //     .catch((error) => console.log(error));
+  // }, []);
 
   return (
     <TableRow hover >
@@ -60,7 +60,7 @@ export default function OrderTableRow({ row }) {
         </Typography>
       </TableCell>
       <TableCell align="left">{applicant}</TableCell>
-      <TableCell align="left">{product}</TableCell>
+      <TableCell align="left">{row.product.name}</TableCell>
       <TableCell align="left">{dayjs(row.create_date).format('DD/MM/YYYY')}{'  '}{dayjs(row.create_date).format("HH:mm:ss")}</TableCell>
     </TableRow>
   );

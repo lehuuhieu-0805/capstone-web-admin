@@ -55,7 +55,7 @@ export default function PageThree() {
   const [messageAlert, setMessageAlert] = useState('');
   const [openAlert, setOpenAlert] = useState(false);
   const [loadingData, setLoadingData] = useState(true);
-  const { currentTab: filterStatus, onChangeTab: onFilterStatus } = useTabs(3);
+  const { currentTab: filterStatus, onChangeTab: onFilterStatus } = useTabs(4);
   const [refreshdata, setRefreshData] = useState(false);
   const {
     dense,
@@ -118,10 +118,11 @@ export default function PageThree() {
   const getLengthByStatus = (status) => tableData.filter((item) => item.status === status).length;
   
   const TABS = [
-    { value: 3, label: 'Tất cả', color: 'info', count: tableData.length },
+    { value: 4, label: 'Tất cả', color: 'info', count: tableData.length },
    
     { value: 1, label: 'Hoạt động', color: 'success', count: getLengthByStatus(1) },
-    { value: 2, label: 'Đang xác thực', color: 'warning', count: getLengthByStatus(2) },
+    { value: 2, label: 'Chờ duyệt', color: 'warning', count: getLengthByStatus(2) },
+    { value: 3, label: 'Đang xác thực', color: 'success', count: getLengthByStatus(3) },
     { value: 0, label: 'Ngưng hoạt động', color: 'error', count: getLengthByStatus(0) },
    
   
@@ -240,7 +241,7 @@ export default function PageThree() {
 
 // ----------------------------------------------------------------------
 
-function applySortFilter({ tableData, comparator, filterName ,filterStatus}) {
+function applySortFilter({ tableData, filterName ,filterStatus}) {
   const stabilizedThis = tableData.map((el, index) => [el, index]);
 
   // stabilizedThis.sort((a, b) => {
@@ -250,7 +251,7 @@ function applySortFilter({ tableData, comparator, filterName ,filterStatus}) {
   // });
 
   tableData = stabilizedThis.map((el) => el[0]);
-  if (filterStatus !== 3) {
+  if (filterStatus !== 4) {
     tableData = tableData.filter((item) => item.status === filterStatus);
   }
   if (filterName) {

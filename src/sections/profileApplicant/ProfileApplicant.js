@@ -18,8 +18,8 @@ ProfileApplicant.propTypes = {
 };
 
 export default function ProfileApplicant({ myProfile,index }) {
-  console.log(index + 1)
-
+  // console.log(index + 1)
+console.log(myProfile)
   return (
     <Grid container spacing={3}>
      <Grid item xs={12}>

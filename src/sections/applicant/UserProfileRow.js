@@ -62,9 +62,9 @@ export default function UserProfileRow({ rows }) {
     <TableRow>
       <TableCell align="center">{dayjs(rows.create_date).format('DD-MM-YYYY')}</TableCell>
       <TableCell align="center" sx={{ textTransform: 'capitalize' }}>
-        {JobPosition.name}
+        {rows.job_position.name}
       </TableCell>
-      <TableCell align="center">{WorkingStyle.name}</TableCell>
+      <TableCell align="center">{rows.working_style.name}</TableCell>
       <TableCell align="center"> {(() => {
             if (rows.status === 0) {
               return (

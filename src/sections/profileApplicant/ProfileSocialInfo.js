@@ -4,7 +4,6 @@ import { styled } from '@mui/material/styles';
 import { Link, Card, CardHeader, Stack } from '@mui/material';
 // components
 import Iconify from '../../components/Iconify';
-import ProfileCertification from './ProfileCertification';
 
 // ----------------------------------------------------------------------
 
@@ -28,7 +27,7 @@ export default function ProfileSocialInfo({ profile }) {
     {
       name: 'Linkedin',
       icon: <IconStyle icon={'eva:linkedin-fill'} color="#006097" />,
-      href: `www.linkedin.com/${ProfileCertification.linked_in_link}`,
+      href: `www.linkedin.com/${profile.linked_in_link}`,
     },
     {
       name: 'githubLink',

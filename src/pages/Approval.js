@@ -56,7 +56,7 @@ export default function Approval() {
   window.addEventListener('scroll', toggleVisible);
   useEffect(() => {
     axios({
-      url: `${api.baseUrl}/${api.configPathType.api}/${api.versionType.v1}/${api.GET_COMPANY}?status=2`,
+      url: `https://stg-api-itjob.unicode.edu.vn/api/v1/companies?status=2`,
       method: 'get',
     })
       .then((response) => {
@@ -66,19 +66,6 @@ export default function Approval() {
       .catch((error) => console.log(error));
       setRefreshDataCompany(false);
   }, [currentTab === 'company', refreshDataCompany]);
-  useEffect(() => {
-    axios({
-      url: `https://stg-api-itjob.unicode.edu.vn/api/v1/users?status=4`,
-      method: 'get',
-    })
-      .then((response) => {
-        setListUser(response.data.data);
-        // console.log(response.data.data);
-
-      })
-      .catch((error) => console.log(error));
-      setRefreshDataJoin(false)
-  }, [refreshDataJoin, currentTab === 'JoinCompany']);
 
   useEffect(() => {
     axios({
@@ -93,19 +80,7 @@ export default function Approval() {
       setRefreshDataApplicant(false)
   }, [currentTab === 'applicant', refreshDataApplicant]);
 
-  useEffect(() => {
-    axios({
-      url: `https://stg-api-itjob.unicode.edu.vn/api/v1/job-posts?status=2`,
-      method: 'get',
-    })
-      .then((response) => {
-        setListJobPost(response.data.data);
-        
-      })
-      .catch((error) => console.log(error));
-      setRefreshDataJobPost(false)
-  }, [currentTab === 'jobpost', refreshDataJobPost ]);
-
+ 
   const handleCompanyRow = (id) => {
        
           const deleteRow = listCompany.filter((row) => row.id !== id);
@@ -136,22 +111,7 @@ export default function Approval() {
       }
  
 };
-const handleJobPostRow = (id) => {
 
-  // console.log(response.status);
- 
-    const deleteRow = listJobPost.filter((row) => row.id !== id);
-    
-    setListJobPost(deleteRow);
-    setOpenAlert(true);
-    setSeverity('success');
-    setMessageAlert('Xác nhận duyệt bài tuyển dụng thành công');
-    if(listJobPost.length === 0){
-      setRefreshDataJobPost(true)
-      onChangeTab('jobpost')
-    }
-
-};
   const handleError = () => {
 
       setOpenAlert(true);
@@ -198,25 +158,7 @@ const handleRejectApplicantRow = (id) => {
     }
 
 };
-const handleRejectJobPostRow = (id) => {
 
-  // console.log(response.status);
- 
-    const deleteRow = listJobPost.filter((row) => row.id !== id);
-    
-    setListJobPost(deleteRow);
-    setOpenAlert(true);
-    setSeverity('success');
-    setMessageAlert('Xác nhận từ chối bài tuyển dụng thành công');
-    if(listJobPost.length === 0){
-      setRefreshDataJobPost(true)
-      onChangeTab('jobpost')
-    }
-
-};
-const handleRefresh = () => {
-  setRefreshDataJoin(true);
-};
 
   const TABS = [
     {
@@ -279,52 +221,8 @@ const handleRefresh = () => {
           </Stack>
         ),
     },
-    {
-      value: 'jobpost',
-      label: 'Bài tuyển dụng',
-      count: listJobPost === undefined ? 0 : listJobPost.length,
-      color: (listJobPost === undefined || listJobPost.length === 0) ? 'info' : 'error',
-      icon: <Iconify icon={'eva:people-fill'} width={20} height={20} />,
-      component:
-        (listJobPost === undefined || listJobPost.length === 0) ? (
-          <Stack spacing={3}>
-            <EmptyContent
-              title="Không có đơn xét duyệt mới"
-              sx={{
-                '& span.MuiBox-root': { height: 160 },
-              }}
-            />
-          </Stack>
-        ) : (
-          <Stack spacing={3}>
-            {listJobPost.map((jp) => (
-              <ConfirmJobPostCard key={jp.id} jobpost={jp} onDeleteRow={() => handleJobPostRow(jp.id)}  onErrorRow={() => handleError(jp.id) }  onRejectRow={() => handleRejectJobPostRow(jp.id) }/>
-            ))}
-          </Stack>
-        ),
-    },
-    {
-      value: 'JoinCompany',
-      label: 'Tham gia công ty',
-      count: listUser === undefined ? 0 : listUser.length,
-      color: (listUser === undefined || listUser.length === 0) ? 'info' : 'error',
-      icon: <Iconify icon={'carbon:user-avatar'} width={20} height={20} />,
-      component:
-        (listUser === undefined || listUser.length === 0) ? (
-          <Stack spacing={3}>
-            <EmptyContent
-              title="Không có đơn xét duyệt mới"
-              sx={{
-                '& span.MuiBox-root': { height: 160 },
-              }}
-            />
-          </Stack>
-        ) : (
-          <Stack spacing={3}>
-            <ConfirmUserCompany user={listUser} onRefresh={handleRefresh} />
-          </Stack>
-        ),
-    },
+  
+
   ];
 
   const handleCloseAlert = (event, reason) => {

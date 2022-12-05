@@ -14,24 +14,14 @@ ProfileWorkingExperience.propTypes = {
 
 export default function ProfileWorkingExperience({ profile }) {
   const [WorkingExperience, setWorkingExperience] = useState([]);
-  useEffect(() => {
-    axios({
-      url: `https://stg-api-itjob.unicode.edu.vn/api/v1/working-experiences?page-size=50&profileApplicantId=${profile.id}`,
-      method: 'get',
-    })
-      .then((response) => {
-        // console.log(response)
-        setWorkingExperience(response.data.data);
-      })
-      .catch((err) => console.log(err));
-  }, [profile.id]);
+
   return (
     <Card>
       <CardHeader title="Kinh nghiệm làm việc" />
 
       <Stack spacing={2} sx={{ p: 3 }}>
-        {WorkingExperience &&
-          WorkingExperience.map((workinge) => <ProfileWorking key={workinge.id} workinge={workinge} />)}
+        {profile.working_experiences &&
+          profile.working_experiences.map((workinge) => <ProfileWorking key={workinge.id} workinge={workinge} />)}
       </Stack>
     </Card>
   );

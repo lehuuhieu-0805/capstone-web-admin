@@ -22,7 +22,7 @@ export default function ProfileFollowInfo(profile) {
     <Card>
       <Stack spacing={2} sx={{ p: 4 }}>
         <ImageList variant="standard" cols={2} gap={8}>
-          {listImage && listImage.map((item) => (
+          {profile.profile.album_images && profile.profile.album_images.map((item) => (
             <ImageListItem key={item.id} >
               {item.url_image && (
                 <img
