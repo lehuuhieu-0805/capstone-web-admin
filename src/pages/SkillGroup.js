@@ -102,6 +102,10 @@ export default function SkillGroup() {
     axios({
       url: `${api.baseUrl}/${api.configPathType.api}/${api.versionType.v1}/${api.GET_SKILLGROUP}/${id}`,
       method: 'delete',
+      headers: {
+        //  "Content-Type": "multipart/form-data" 
+         'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+    },
     })
       .then((response) => {
         if (response?.status === 204) {
@@ -131,6 +135,10 @@ export default function SkillGroup() {
     axios({
       url: `${api.baseUrl}/${api.configPathType.api}/${api.versionType.v1}/${api.GET_SKILLGROUP}`,
       method: 'post',
+      headers: {
+        //  "Content-Type": "multipart/form-data" 
+         'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+    },
       data: {
         name: names,
       },

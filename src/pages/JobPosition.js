@@ -97,6 +97,9 @@ export default function PageFour() {
     axios({
       url: `${api.baseUrl}/${api.configPathType.api}/${api.versionType.v1}/${api.GET_JOBPOSITION}/${id}`,
       method: 'delete',
+      headers: {
+              'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            },
     })
       .then((response) => {
         if (response?.status === 204) {
@@ -129,6 +132,10 @@ export default function PageFour() {
       axios({
         url: `${api.baseUrl}/${api.configPathType.api}/${api.versionType.v1}/${api.GET_JOBPOSITION}`,
         method: 'post',
+        headers: {
+          //  "Content-Type": "multipart/form-data" 
+           'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+      },
         data: {
           name: names,
         }

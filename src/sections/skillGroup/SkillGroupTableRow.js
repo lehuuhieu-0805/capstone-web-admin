@@ -57,6 +57,10 @@ export default function SkillGroupTableRow({ row, selected, onEditRow,  onDelete
       axios({
       url: `${api.baseUrl}/${api.configPathType.api}/${api.versionType.v1}/${api.GET_SKILLGROUP}?id=${row.id}`,
       method: 'put',
+      headers: {
+        //  "Content-Type": "multipart/form-data" 
+         'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+    },
       data: {
         id: row.id,
         name: namess,

@@ -100,6 +100,10 @@ export default function PageFive() {
   const handleDeleteRow = (id) => {
     axios({
       url: `${api.baseUrl}/${api.configPathType.api}/${api.versionType.v1}/${api.GET_WORKINGSTYLE}/${id}`,
+      headers: {
+        //  "Content-Type": "multipart/form-data" 
+         'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+    },
       method: 'delete',
     })
       .then((response) => {
@@ -131,6 +135,10 @@ export default function PageFive() {
     axios({
       url: `${api.baseUrl}/${api.configPathType.api}/${api.versionType.v1}/${api.GET_WORKINGSTYLE}`,
       method: 'post',
+      headers: {
+        //  "Content-Type": "multipart/form-data" 
+         'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+    },
       data: {
         name: names,
       },

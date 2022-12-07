@@ -54,6 +54,10 @@ export default function JobPositionTableRow({ row, selected, onEditRow,  onDelet
       axios({
         url: `${api.baseUrl}/${api.configPathType.api}/${api.versionType.v1}/${api.GET_JOBPOSITION}/${row.id}`,
         method: 'put',       
+        headers: {
+          //  "Content-Type": "multipart/form-data" 
+           'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+      },
         data: {
           id: row.id,
           name: names,

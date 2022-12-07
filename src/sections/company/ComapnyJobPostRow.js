@@ -66,7 +66,10 @@ export default function CompanyJobPostRow({ rows }) {
   return (
     <TableRow>
       <TableCell align="center">{dayjs(rows.create_date).format('DD-MM-YYYY')}</TableCell>
-      <TableCell align="center">{rows.title}</TableCell>
+      <TableCell align="center">
+      <h5>{rows.title.slice(0, 60)}</h5>
+      <h5>{rows.title.slice(60, 100)}</h5>
+        </TableCell>
       <TableCell align="center" sx={{ textTransform: 'capitalize' }}>
         {rows.quantity}
       </TableCell>

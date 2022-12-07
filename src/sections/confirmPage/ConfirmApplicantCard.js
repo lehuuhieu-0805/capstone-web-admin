@@ -82,7 +82,11 @@ export default function ConfirmApplicantCard({ applicant, onDeleteRow, onErrorRo
   const handleAccept = () => {
     axios({
       url: `https://stg-api-itjob.unicode.edu.vn/api/v1/applicants/update?id=${applicant.id}`,
-      method: 'put',       
+      method: 'put',    
+      headers: {
+        //  "Content-Type": "multipart/form-data" 
+         'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+    },  
       data: {
         id: applicant.id,
         earn_money: 1,
@@ -101,7 +105,11 @@ export default function ConfirmApplicantCard({ applicant, onDeleteRow, onErrorRo
   const handleReject = () => {
     axios({
       url: `https://stg-api-itjob.unicode.edu.vn/api/v1/applicants/update?id=${applicant.id}`,
-      method: 'put',       
+      method: 'put',      
+      headers: {
+        //  "Content-Type": "multipart/form-data" 
+         'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+    }, 
       data: {
         id: applicant.id,
         earn_money: 0,

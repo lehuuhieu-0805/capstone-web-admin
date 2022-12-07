@@ -119,6 +119,10 @@ export default function Skills() {
   const handleDeleteRow = (id) => {
     axios({
       url: `${api.baseUrl}/${api.configPathType.api}/${api.versionType.v1}/${api.GET_SKILL}/${id}`,
+      headers: {
+        //  "Content-Type": "multipart/form-data" 
+         'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+    },
       method: 'delete',
     })
       .then((response) => {
@@ -150,6 +154,10 @@ export default function Skills() {
       axios({
         url: `${api.baseUrl}/${api.configPathType.api}/${api.versionType.v1}/${api.GET_SKILL}`,
         method: 'post',
+        headers: {
+          //  "Content-Type": "multipart/form-data" 
+           'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+      },
         data: {
           name: names,
           skill_group_id: skillgroupids

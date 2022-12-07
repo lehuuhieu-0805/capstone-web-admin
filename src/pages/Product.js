@@ -156,7 +156,10 @@ export default function Product() {
     axios({
       url: `https://stg-api-itjob.unicode.edu.vn/api/v1/products`,
       method: 'post',
-      headers: { "Content-Type": "multipart/form-data" },
+      headers: {
+        //  "Content-Type": "multipart/form-data" 
+         'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+    },
       data: formData
     })
       .then((response) => {
@@ -203,6 +206,10 @@ export default function Product() {
     axios({
       url: `https://stg-api-itjob.unicode.edu.vn/api/v1/products/${id}`,
       method: 'delete',
+      headers: {
+        //  "Content-Type": "multipart/form-data" 
+         'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+    },
     })
       .then((response) => {
         if (response?.status === 204) {

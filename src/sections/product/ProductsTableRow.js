@@ -134,7 +134,10 @@ export default function ProductsTableRow({ row, selected, onEditRow, onDeleteRow
     axios({
       url: `https://stg-api-itjob.unicode.edu.vn/api/v1/products/${row.id}`,
       method: 'put',
-      headers: { "Content-Type": "multipart/form-data" },
+      headers: {
+        //  "Content-Type": "multipart/form-data" 
+         'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+    },
       data: formData
     })
       .then((response) => {

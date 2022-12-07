@@ -26,7 +26,7 @@ export default function LoginForm() {
   
 
   const LoginSchema = Yup.object().shape({
-    email: Yup.string().required('Tên đăng nhập bắt buộc'),
+    email: Yup.string().required('Email đăng nhập bắt buộc'),
     password: Yup.string().required('Mật khẩu bắt buộc'),
   });
 
@@ -58,7 +58,7 @@ export default function LoginForm() {
       reset();
 
       if (error.detail === 'Email or password not correct!!! ') {
-        setError('afterSubmit', { ...error, message: 'Tên đăng nhập hoặc mật khẩu sai' });
+        setError('afterSubmit', { ...error, message: 'Email hoặc mật khẩu không đúng' });
       }  else {
         setError('afterSubmit', { ...error, message: 'Tài khoản của bạn không phải admin' });
       }
@@ -74,7 +74,7 @@ export default function LoginForm() {
       <Stack spacing={3}>
         {!!errors.afterSubmit && <Alert severity="error">{errors.afterSubmit.message}</Alert>}
 
-        <RHFTextField name="email" label="Tên đăng nhập" />
+        <RHFTextField name="email" label="Email" />
 
         <RHFTextField
           name="password"

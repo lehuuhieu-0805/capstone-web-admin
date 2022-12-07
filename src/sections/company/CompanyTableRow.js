@@ -86,6 +86,10 @@ export default function CompanyTableRow({ row, selected, onDeleteRow }) {
     axios({
       url: `https://stg-api-itjob.unicode.edu.vn/api/v1/companies/${row.id}`,
       method: 'delete',
+      headers: {
+        //  "Content-Type": "multipart/form-data" 
+         'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+    },
       data: {
         reason: reasons,
       }

@@ -118,9 +118,10 @@ export default function SkillLevelTableRow({ row, selected, onEditRow, onEditRow
            axios({
             url: `${api.baseUrl}/${api.configPathType.api}/${api.versionType.v1}/${api.GET_SKILLLEVEL}/${item}`,
             method: 'delete',
-            // headers: {
-            //   'Authorization': `Bearer ${token}`
-            // },
+            headers: {
+              //  "Content-Type": "multipart/form-data" 
+               'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+          },
           })
             .then((response) => {
               console.log(response);
@@ -137,9 +138,10 @@ export default function SkillLevelTableRow({ row, selected, onEditRow, onEditRow
           axios({
             url: `${api.baseUrl}/${api.configPathType.api}/${api.versionType.v1}/${api.GET_SKILLLEVEL}`,
             method: 'post',
-            // headers: {
-            //   'Authorization': `Bearer ${token}`
-            // },
+            headers: {
+              //  "Content-Type": "multipart/form-data" 
+               'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+          },
             data: {
               name: item.name,
               skill_group_id: row.id,
@@ -160,9 +162,10 @@ export default function SkillLevelTableRow({ row, selected, onEditRow, onEditRow
           axios({
             url: `${api.baseUrl}/${api.configPathType.api}/${api.versionType.v1}/${api.GET_SKILLLEVEL}?id=${item.id}`,
             method: 'put',
-            // headers: {
-            //   'Authorization': `Bearer ${token}`
-            // },
+            headers: {
+              //  "Content-Type": "multipart/form-data" 
+               'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+          },
             data: {
               id: item.id,
               name: item.name,

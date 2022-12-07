@@ -103,6 +103,10 @@ export default function UserTableRow({ row, selected, onDeleteRow }) {
     axios({
       url: `${api.baseUrl}/${api.configPathType.api}/${api.versionType.v1}/${api.GET_APPLICANTS}/${row.id}`,
       method: 'delete',
+      headers: {
+        //  "Content-Type": "multipart/form-data" 
+         'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+    },
       data: {
         reason: reasons,
       }
