@@ -57,21 +57,11 @@ export default function LoginForm() {
       setError('afterSubmit', { ...error, message: error });
       reset();
 
-      if (error.detail === 'Phone not correct!!! ') {
-        setError('afterSubmit', { ...error, message: 'Tên đăng nhập không tồn tại' });
-      } else if(error.detail === 'Password not correct!!! '){
-        setError('afterSubmit', { ...error, message: 'Sai mật khẩu' });
-      } else {
+      if (error.detail === 'Email or password not correct!!! ') {
+        setError('afterSubmit', { ...error, message: 'Tên đăng nhập hoặc mật khẩu sai' });
+      }  else {
         setError('afterSubmit', { ...error, message: 'Tài khoản của bạn không phải admin' });
       }
-
-
-
-
-
-
-
-
       // if (isMountedRef.current) {
       //   setError('afterSubmit', { ...error, message: error.detail });
       // }
