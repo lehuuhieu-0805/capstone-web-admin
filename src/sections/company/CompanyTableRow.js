@@ -346,7 +346,56 @@ export default function CompanyTableRow({ row, selected, onDeleteRow }) {
               </Grid>
               <Grid item xs={6}>
                 <h4>Trạng thái: </h4>
-                <h4 style={{ fontWeight: 'normal' }}>{status === 0 ? 'Tạm ngưng' : 'Hoạt động'}</h4>
+                <h4 style={{ fontWeight: 'normal' }}>
+                {(() => {
+            if (status === 0) {
+              return (
+                <Label
+                  variant={theme.palette.mode === 'light' ? 'ghost' : 'filled'}
+                  color={'error'}
+                  sx={{ textTransform: 'capitalize' }}
+                >
+                  Ngưng hoạt động
+                </Label>
+              );
+            }
+            if (status === 1) {
+              return (
+                <Label
+                  variant={theme.palette.mode === 'light' ? 'ghost' : 'filled'}
+                  color={'success'}
+                  sx={{ textTransform: 'capitalize' }}
+                >
+                  Hoạt động
+                </Label>
+              );
+            }
+            if (status === 2) {
+              return (
+                <Label
+                  variant={theme.palette.mode === 'light' ? 'ghost' : 'filled'}
+                  color={'warning'}
+                  sx={{ textTransform: 'capitalize' }}
+                >
+                  Chờ xét duyệt
+                </Label>
+              );
+            }
+            if (status === 3) {
+              return (
+                <Label
+                  variant={theme.palette.mode === 'light' ? 'ghost' : 'filled'}
+                  color={'warning'}
+                  sx={{ textTransform: 'capitalize' }}
+                >
+                  Đang xác thực
+                </Label>
+              );
+            }
+          
+            
+          })()}
+                  </h4>
               </Grid>
               {(() => {
            

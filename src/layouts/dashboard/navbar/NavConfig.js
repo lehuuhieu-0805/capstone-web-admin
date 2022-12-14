@@ -55,6 +55,7 @@ const navConfig = [
           { title: 'Trình độ kỹ năng', path: '/dashboard/skillmanager/skillLevel' },
         ],
       },
+      { title: 'Cấu hình hệ thông', path: '/dashboard/systemconfig', icon: <Iconify icon={'ant-design:setting-outlined'} width={20} height={20} />},
     ],
     
   },

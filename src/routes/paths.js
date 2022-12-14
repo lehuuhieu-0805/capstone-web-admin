@@ -56,6 +56,9 @@ export const PATH_DASHBOARD = {
     skills: path(ROOTS_DASHBOARD, '/skillmanager/skills'),
     skillLevel: path(ROOTS_DASHBOARD, '/skillmanager/skillLevel'),
   },
+  config: {
+    systemconfig: path(ROOTS_DASHBOARD, '/systemconfig'),
+  },
 };
 
 export const PATH_DOCS = 'https://docs-minimals.vercel.app/introduction';

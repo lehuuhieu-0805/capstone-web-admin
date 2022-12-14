@@ -162,11 +162,7 @@ export default function Order() {
               onRowsPerPageChange={onChangeRowsPerPage}
             />
 
-            <FormControlLabel
-              control={<Switch checked={dense} onChange={onChangeDense} />}
-              label="Thu nhỏ"
-              sx={{ px: 3, py: 1.5, top: 0, position: { md: 'absolute' } }}
-            />
+          
           </Box>
         </Card>
       </Container>

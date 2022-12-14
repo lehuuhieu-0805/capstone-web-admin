@@ -38,6 +38,7 @@ import { api } from "../constants";
 
 const TABLE_HEAD = [
   { id: ''},
+  // { id: 'name', label: 'Bài tuyển dụng', align: 'left' },
   { id: 'name', label: 'Tên', align: 'left' },
   { id: 'phone', label: 'Điện thoại', align: 'left' },
   { id: 'website', label: 'Website', align: 'left' },
@@ -77,7 +78,7 @@ export default function PageThree() {
 
   useEffect(() => {
     axios({
-      url: `https://stg-api-itjob.unicode.edu.vn/api/v1/companies?sort-key=Status`,
+      url: `https://stg-api-itjob.unicode.edu.vn/api/v1/companies?sort-key=Status&sort-order=DESC`,
       method: 'get',
     })
       .then((response) => {
@@ -128,6 +129,10 @@ export default function PageThree() {
   
   ];
 
+  useEffect(() => {
+    setPage(0);
+  }, [filterStatus]);
+
   const handleCloseAlert = (event, reason) => {
     if (reason === 'clickaway') {
       return;
@@ -137,7 +142,7 @@ export default function PageThree() {
 
   const denseHeight = dense ? 52 : 72;
 
-  const isNotFound = !dataFiltered.length && !!filterName;
+  const isNotFound = !dataFiltered.length && !!filterName || dataFiltered.length === 0 ;
 
   return (
     <Page title="Công ty">

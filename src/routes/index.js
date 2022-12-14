@@ -64,9 +64,9 @@ export default function Router() {
             { element: <Navigate to="/dashboard/management/jobposition" replace />, index: true },
             { path: 'jobposition', element: <JobPosition /> },
             { path: 'workingstyle', element: <WorkingStyle /> },
-            { path: 'skillGroup', element: <SkillGroup /> },
-            { path: 'skills', element: <Skills /> },
-            { path: 'skillLevel', element: <SkillsLevel /> },
+            // { path: 'skillGroup', element: <SkillGroup /> },
+            // { path: 'skills', element: <Skills /> },
+            // { path: 'skillLevel', element: <SkillsLevel /> },
           ],
         },
         {
@@ -79,6 +79,7 @@ export default function Router() {
             { path: 'skillLevel', element: <SkillsLevel /> },
           ],
         },
+        { path: 'systemconfig', element: <SystemConfig /> },
       ],
     },
     {
@@ -102,6 +103,7 @@ const PageOne = Loadable(lazy(() => import('../pages/Dashboard')));
 const Applicant = Loadable(lazy(() => import('../pages/Applicant')));
 const Transactions = Loadable(lazy(() => import('../pages/Transaction')));
 const Order = Loadable(lazy(() => import('../pages/Order')));
+const SystemConfig = Loadable(lazy(() => import('../pages/SystemConfig')));
 const Product = Loadable(lazy(() => import('../pages/Product')));
 const Company = Loadable(lazy(() => import('../pages/Company')));
 const Approval = Loadable(lazy(() => import('../pages/Approval')));

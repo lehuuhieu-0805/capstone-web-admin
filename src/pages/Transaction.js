@@ -65,7 +65,7 @@ export default function Transaction() {
     order,
     orderBy,
     rowsPerPage,
-    
+    setPage,
     //
     selected,
 
@@ -143,7 +143,9 @@ export default function Transaction() {
     { value: 6, label: 'Nạp tiền bài tuyển dụng' }
   ];
 
- 
+  useEffect(() => {
+    setPage(0);
+  }, [filterStatus]);
  
 
   const dataFiltered = applySortFilter({

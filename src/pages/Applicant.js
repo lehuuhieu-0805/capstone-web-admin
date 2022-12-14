@@ -94,6 +94,11 @@ export default function PageTwo() {
       });
   }, [refreshdata]);
 
+  useEffect(() => {
+    setPage(0);
+  }, [filterStatus]);
+  console.log(filterStatus)
+  console.log(onFilterStatus)
   const { themeStretch } = useSettings();
 
   const [filterName, setFilterName] = useState('');
@@ -136,7 +141,7 @@ export default function PageTwo() {
 
   const denseHeight = dense ? 52 : 72;
 
-  const isNotFound = !dataFiltered.length && !!filterName;
+  const isNotFound = !dataFiltered.length && !!filterName || dataFiltered.length === 0 ;
 
   return (
     <Page title="Ứng viên">
@@ -224,11 +229,7 @@ export default function PageTwo() {
               onRowsPerPageChange={onChangeRowsPerPage}
             />
 
-            <FormControlLabel
-              control={<Switch checked={dense} onChange={onChangeDense} />}
-              label="Thu nhỏ"
-              sx={{ px: 3, py: 1.5, top: 0, position: { md: 'absolute' } }}
-            />
+          
           </Box>
         </Card>
       </Container>
