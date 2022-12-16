@@ -136,11 +136,11 @@ export default function Transaction() {
   const TABS = [
     { value: 3, label: 'Tất cả', color: 'info'  },
     { value: 1, label: 'Nâng cấp premium', color: 'success'},
-    { value: 2, label: 'Tạo bài tuyển dụng', color: 'warning'},
+    { value: 6, label: 'Tạo bài tuyển dụng', color: 'warning'},
     { value: 0, label: 'Nạp tiền', color: 'error' },
     { value: 4, label: 'Đổi thưởng', color: 'error'},
     { value: 5, label: 'Hoàn tiền' },
-    { value: 6, label: 'Nạp tiền bài tuyển dụng' }
+    // { value: 6, label: 'Nạp tiền bài tuyển dụng' }
   ];
 
   useEffect(() => {
@@ -305,9 +305,9 @@ function applySortFilter({ tableData, comparator , filterStatus }) {
   if (filterStatus === 1) {
     tableData = tableData.filter((item) => item.type_of_transaction === 'Upgrade');
   }
-  if (filterStatus === 2) {
-    tableData = tableData.filter((item) => item.type_of_transaction === 'Top up for job post');
-  }
+  // if (filterStatus === 2) {
+  //   tableData = tableData.filter((item) => item.type_of_transaction === 'Top up for job post');
+  // }
   if (filterStatus === 4) {
     tableData = tableData.filter((item) => item.type_of_transaction === 'Reward exchange');
   }

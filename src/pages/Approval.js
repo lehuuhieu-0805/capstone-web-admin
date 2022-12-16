@@ -31,7 +31,7 @@ export default function Approval() {
   const [openAlert, setOpenAlert] = useState(false);
   const [listJobPost, setListJobPost] = useState([]);
   const [listUser, setListUser] = useState([]);
-  const { currentTab, onChangeTab } = useTabs('company');
+  const { currentTab, onChangeTab } = useTabs('applicant');
   const [visible, setVisible] = useState(false);
   const [refreshDataCompany, setRefreshDataCompany] = useState(false);
   const [refreshDataApplicant, setRefreshDataApplicant] = useState(false);

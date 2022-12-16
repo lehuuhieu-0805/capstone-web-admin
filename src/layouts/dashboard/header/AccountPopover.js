@@ -108,7 +108,7 @@ export default function AccountPopover() {
         onClick={() => {
           
           (async () => {
-            unSubscribeToTopic(`${user.user.IdUser}`);
+            unSubscribeToTopic(`${user.IdUser}`);
 
           })();
 
