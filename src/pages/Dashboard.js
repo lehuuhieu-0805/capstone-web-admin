@@ -81,125 +81,133 @@ export default function PageOne() {
           setListJobPost(response.data.data.length);
         })
         .catch((error) => console.log(error));
-      await  axios({
-      url: `https://stg-api-itjob.unicode.edu.vn/api/v1/likes/date?fromDate=${dayjs().add(-1, 'day').format('YYYY-MM-DD')}&toDate=${dayjs().format('YYYY-MM-DD')}`,
-      method: 'get',
-    })
-      .then((response) => {
-        if (response.status === 204) {
-          day0.push(0);
-        } else {
-          day0.push(response.data.data.length);
-        }
-        // console.log(response)
+        await  axios({
+          url: `https://stg-api-itjob.unicode.edu.vn/api/v1/likes/date?fromDate=${dayjs().add(-9, 'day').format('YYYY-MM-DD')}&toDate=${dayjs().add(-8, 'day').format('YYYY-MM-DD')}`,
+          method: 'get',
+        })
+          .then((response) => {
+            if (response.status === 204) {
+              day0.push(0);
+            } else {
+              day0.push(response.data.data.length);
+            }
+            // console.log(response)
+          })
+          .catch((error) => console.log(error));
+          await  axios({
+            url: `https://stg-api-itjob.unicode.edu.vn/api/v1/likes/date?fromDate=${dayjs().add(-8, 'day').format('YYYY-MM-DD')}&toDate=${dayjs().add(-7, 'day').format('YYYY-MM-DD')}`,
+            method: 'get',
+          })
+            .then((response) => {
+              if (response.status === 204) {
+                day0.push(0);
+              } else {
+                day0.push(response.data.data.length);
+              }
+              // console.log(response)
+            })
+            .catch((error) => console.log(error));
+            await   axios({
+              url: `https://stg-api-itjob.unicode.edu.vn/api/v1/likes/date?fromDate=${dayjs().add(-7, 'day').format('YYYY-MM-DD')}&toDate=${dayjs().add(-6, 'day').format('YYYY-MM-DD')}`,
+              method: 'get',
+            })
+              .then((response) => {
+                if (response.status === 204) {
+                  day0.push(0);
+                } else {
+                  day0.push(response.data.data.length);
+                }
+                // console.log(response)
+              })
+              .catch((error) => console.log(error));
+              await   axios({
+                url: `https://stg-api-itjob.unicode.edu.vn/api/v1/likes/date?fromDate=${dayjs().add(-6, 'day').format('YYYY-MM-DD')}&toDate=${dayjs().add(-5, 'day').format('YYYY-MM-DD')}`,
+                method: 'get',
+              })
+                .then((response) => {
+                  if (response.status === 204) {
+                    day0.push(0);
+                  } else {
+                    day0.push(response.data.data.length);
+                  }
+                  // console.log(response)
+                })
+                .catch((error) => console.log(error));
+                await   axios({
+                  url: `https://stg-api-itjob.unicode.edu.vn/api/v1/likes/date?fromDate=${dayjs().add(-5, 'day').format('YYYY-MM-DD')}&toDate=${dayjs().add(-4, 'day').format('YYYY-MM-DD')}`,
+                  method: 'get',
+                })
+                  .then((response) => {
+                    if (response.status === 204) {
+                      day0.push(0);
+                    } else {
+                      day0.push(response.data.data.length);
+                    }
+                    // console.log(response)
+                  })
+                  .catch((error) => console.log(error));
+                  await   axios({
+                    url: `https://stg-api-itjob.unicode.edu.vn/api/v1/likes/date?fromDate=${dayjs().add(-4, 'day').format('YYYY-MM-DD')}&toDate=${dayjs().add(-3, 'day').format('YYYY-MM-DD')}`,
+                    method: 'get',
+                  })
+                    .then((response) => {
+                      if (response.status === 204) {
+                        day0.push(0);
+                      } else {
+                        day0.push(response.data.data.length);
+                      }
+                      // console.log(response)
+                    })
+                    .catch((error) => console.log(error));
+                    await   axios({
+                      url: `https://stg-api-itjob.unicode.edu.vn/api/v1/likes/date?fromDate=${dayjs().add(-3, 'day').format('YYYY-MM-DD')}&toDate=${dayjs().add(-2, 'day').format('YYYY-MM-DD')}`,
+                      method: 'get',
+                    })
+                      .then((response) => {
+                        // console.log(response.data.data)
+                        if (response.status === 204) {
+                          day0.push(0);
+                        } else {
+                          day0.push(response.data.data.length);
+                        }
+                
+                      })
+                      .catch((error) => console.log(error));
+                      await  axios({
+                        url: `https://stg-api-itjob.unicode.edu.vn/api/v1/likes/date?fromDate=${dayjs().add(-2, 'day').format('YYYY-MM-DD')}&toDate=${dayjs().add(-1, 'day').format('YYYY-MM-DD')}`,
+                        method: 'get',
+                      })
+                        .then((response) => {
+                          if (response.status === 204) {
+                            day0.push(0);
+                          } else {
+                            day0.push(response.data.data.length);
+                          }
+                        })
+                        .catch((error) => console.log(error));
+                        await  axios({
+                          url: `https://stg-api-itjob.unicode.edu.vn/api/v1/likes/date?fromDate=${dayjs().add(-1, 'day').format('YYYY-MM-DD')}&toDate=${dayjs().add(1, 'day').format('YYYY-MM-DD')}`,
+                          method: 'get',
+                        })
+                          .then((response) => {
+                            if (response.status === 204) {
+                              day0.push(0);
+                            } else {
+                              day0.push(response.data.data.length);
+                            }
+                            // console.log(response)
+                    
+                          })
+                          .catch((error) => console.log(error));
+                         
+     
 
-      })
-      .catch((error) => console.log(error));
-      await  axios({
-      url: `https://stg-api-itjob.unicode.edu.vn/api/v1/likes/date?fromDate=${dayjs().add(-2, 'day').format('YYYY-MM-DD')}&toDate=${dayjs().add(-1, 'day').format('YYYY-MM-DD')}`,
-      method: 'get',
-    })
-      .then((response) => {
-        if (response.status === 204) {
-          day0.push(0);
-        } else {
-          day0.push(response.data.data.length);
-        }
-      })
-      .catch((error) => console.log(error));
-      await   axios({
-      url: `https://stg-api-itjob.unicode.edu.vn/api/v1/likes/date?fromDate=${dayjs().add(-3, 'day').format('YYYY-MM-DD')}&toDate=${dayjs().add(-2, 'day').format('YYYY-MM-DD')}`,
-      method: 'get',
-    })
-      .then((response) => {
-        // console.log(response.data.data)
-        if (response.status === 204) {
-          day0.push(0);
-        } else {
-          day0.push(response.data.data.length);
-        }
-
-      })
-      .catch((error) => console.log(error));
-
-      await   axios({
-      url: `https://stg-api-itjob.unicode.edu.vn/api/v1/likes/date?fromDate=${dayjs().add(-4, 'day').format('YYYY-MM-DD')}&toDate=${dayjs().add(-3, 'day').format('YYYY-MM-DD')}`,
-      method: 'get',
-    })
-      .then((response) => {
-        if (response.status === 204) {
-          day0.push(0);
-        } else {
-          day0.push(response.data.data.length);
-        }
-        // console.log(response)
-      })
-      .catch((error) => console.log(error));
-      await   axios({
-      url: `https://stg-api-itjob.unicode.edu.vn/api/v1/likes/date?fromDate=${dayjs().add(-5, 'day').format('YYYY-MM-DD')}&toDate=${dayjs().add(-4, 'day').format('YYYY-MM-DD')}`,
-      method: 'get',
-    })
-      .then((response) => {
-        if (response.status === 204) {
-          day0.push(0);
-        } else {
-          day0.push(response.data.data.length);
-        }
-        // console.log(response)
-      })
-      .catch((error) => console.log(error));
-      await   axios({
-      url: `https://stg-api-itjob.unicode.edu.vn/api/v1/likes/date?fromDate=${dayjs().add(-6, 'day').format('YYYY-MM-DD')}&toDate=${dayjs().add(-5, 'day').format('YYYY-MM-DD')}`,
-      method: 'get',
-    })
-      .then((response) => {
-        if (response.status === 204) {
-          day0.push(0);
-        } else {
-          day0.push(response.data.data.length);
-        }
-        // console.log(response)
-      })
-      .catch((error) => console.log(error));
-      await   axios({
-      url: `https://stg-api-itjob.unicode.edu.vn/api/v1/likes/date?fromDate=${dayjs().add(-7, 'day').format('YYYY-MM-DD')}&toDate=${dayjs().add(-6, 'day').format('YYYY-MM-DD')}`,
-      method: 'get',
-    })
-      .then((response) => {
-        if (response.status === 204) {
-          day0.push(0);
-        } else {
-          day0.push(response.data.data.length);
-        }
-        // console.log(response)
-      })
-      .catch((error) => console.log(error));
-      await  axios({
-      url: `https://stg-api-itjob.unicode.edu.vn/api/v1/likes/date?fromDate=${dayjs().add(-8, 'day').format('YYYY-MM-DD')}&toDate=${dayjs().add(-7, 'day').format('YYYY-MM-DD')}`,
-      method: 'get',
-    })
-      .then((response) => {
-        if (response.status === 204) {
-          day0.push(0);
-        } else {
-          day0.push(response.data.data.length);
-        }
-        // console.log(response)
-      })
-      .catch((error) => console.log(error));
-      await  axios({
-      url: `https://stg-api-itjob.unicode.edu.vn/api/v1/likes/date?fromDate=${dayjs().add(-9, 'day').format('YYYY-MM-DD')}&toDate=${dayjs().add(-8, 'day').format('YYYY-MM-DD')}`,
-      method: 'get',
-    })
-      .then((response) => {
-        if (response.status === 204) {
-          day0.push(0);
-        } else {
-          day0.push(response.data.data.length);
-        }
-        // console.log(response)
-      })
-      .catch((error) => console.log(error));
+    
+     
+     
+    
+    
+    
       
       setLoadingData(false);
   }
@@ -333,7 +341,7 @@ export default function PageOne() {
             <Grid item xs={12}>
               <BankingBalanceStatistics
                 title="Thống kê sử dụng"
-                subheader="Lượt Like trong hệ thống"
+                subheader="Lượt Thích trong hệ thống"
                 chartLabels={[`${dayjs().add(-8, 'day').format('DD/MM')}`, `${dayjs().add(-7, 'day').format('DD/MM')}`, `${dayjs().add(-6, 'day').format('DD/MM')}`, `${dayjs().add(-5, 'day').format('DD/MM')}`, `${dayjs().add(-4, 'day').format('DD/MM')}`, `${dayjs().add(-3, 'day').format('DD/MM')}`, `${dayjs().add(-2, 'day').format('DD/MM')}`, `${dayjs().add(-1, 'day').format('DD/MM')}`, `${dayjs().format('DD/MM')}`]}
                 chartData={[
                   {
